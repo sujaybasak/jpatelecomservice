@@ -54,9 +54,29 @@ hr {
   width: 100%;
   opacity: 0.9;
 }
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
 .pad{
 padding-left: 20%;
 padding-right: 20%;
+ padding-top: 5%;
+ padding-bottom: 5%;
+ background-color: #f0f8ff;
 }
 
 .registerbtn:hover {
@@ -88,6 +108,13 @@ a {
 <div>
 <span>Password</span><br>
 <input name="password" type="password" />
+ <c:if test="${message!=null}">
+    	<div class="alert">
+  		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  		<strong><c:out value="${message}"/></strong>
+		</div>
+
+    </c:if>
 </div>
 <div  align ="center">
 <input type="submit" class="registerbtn" value="Submit"/>

@@ -2,6 +2,7 @@ package com.deloitte.telecom.controller;
 
 import com.deloitte.telecom.dto.SessionData;
 
+import com.deloitte.telecom.exceptions.IncorrectMobileNoException;
 import com.deloitte.telecom.service.ICustomerAccountService;
 import com.deloitte.telecom.entities.CustomerAccount;
 import com.deloitte.telecom.exceptions.MobileNoAlreadyExistsException;
@@ -48,12 +49,12 @@ public class HelloController {
     }
 
     @GetMapping("/logincheck")
-    public RedirectView loginCheck(@RequestParam("mobileno") String mobileNo,
+    public Object loginCheck(@RequestParam("mobileno") String mobileNo,
                                    @RequestParam("password") String password) {
 
         boolean correct = service.checkCredentialsByMobileNo(mobileNo, password);
         if (!correct) {
-            return new RedirectView("/userinput");
+            return new ModelAndView("userinput","message","Incorrect mobile number or password.");
         }
         CustomerAccount user = service.findByMobileNo(mobileNo);
         sessionData.setUser(user);
@@ -94,6 +95,13 @@ public class HelloController {
         sessionData.setUser(null);
         return new RedirectView("/userinput");
     }
+
+    @GetMapping("/recharge")
+    public ModelAndView recharge(@RequestParam("amount") double balance) {
+        CustomerAccount appUser = sessionData.getUser();
+        service.rechargeAccount(appUser, balance);
+        return new ModelAndView("home","user",appUser);
+    }
     
     @GetMapping("/error")
     public ModelAndView error(){
@@ -103,6 +111,11 @@ public class HelloController {
     @ExceptionHandler(MobileNoAlreadyExistsException.class)
     public ModelAndView handleIfMobileNumberAlreadyExists(MobileNoAlreadyExistsException e){
       return new ModelAndView("register","message","mobilenumber already exists");
+    }
+
+    @ExceptionHandler(IncorrectMobileNoException.class)
+    public ModelAndView handleIfIncorrectMobileNo(IncorrectMobileNoException e){
+        return new ModelAndView("register","message","Please enter valid mobile number.");
     }
 
     @ExceptionHandler(value = Throwable.class)

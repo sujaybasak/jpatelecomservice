@@ -20,6 +20,19 @@ body {
   padding: 50px;
   background-color:rgb(198, 228, 230);
 }
+
+input[type=text], input[type=password],input[type=number] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: white;
+}
+input[type=text]:focus, input[type=password]:focus,input[type=number]:focus  {
+  background-color: #ccc;
+  outline: none;
+}
 .registerbtn {
   background-color: #0000ff;
   color: white;
@@ -30,23 +43,40 @@ body {
   cursor: pointer;
   width: 20%;
   opacity: 0.9;
+
+.p{
+padding-left: 20%;
+padding-right: 20%;
+ padding-top: 5%;
+ padding-bottom: 5%;
+ background-color: #f0f8ff;
 }
 </style>
 
 </head>
-<body>
 
+<body>
+<div class="p">
 <div class="container">
-<h2 align ="center">Welcome <c:out value="${user.getName()}"/> Your details are given below. </h2>
+
+<h2 align ="center">Welcome <c:out value="${user.name}"/> Your details are given below. </h2>
 <h3>
 ID is  <c:out value="${user.id}"/><br>
 Mobile no is  <c:out value="${user.mobileNo}"/><br>
-Name is <c:out value="${user.getName()}"/><br>
-Account Type is <c:out value="${user.getAccountType()}"/><br>
-Recharge amount <c:out value="${user.getBalance()}"/><br>
+Name is <c:out value="${user.name}"/><br>
+Account Type is <c:out value="${user.accountType}"/><br>
+Recharge amount <c:out value="${user.balance}"/><br>
+
+ <form method="get" action="recharge">
+    <label >Recharge:</label><br>
+    <input name="amount" placeholder="Enter Recharge Amount" type="number" required>
+    <button type="submit" class="registerbtn">Recharge</button>
+    </form>
 </h3>
 
 <a href="/signout" class="registerbtn">Sign out</a>
 </div>
+</div>
 </body>
+
 </html>

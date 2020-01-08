@@ -19,4 +19,6 @@ public interface ICustomerAccountDao {
     CustomerAccount save(CustomerAccount user);
     
     List<CustomerAccount> fetchUsers(int blockSize);
+
+    void rechargeAccount(CustomerAccount c, double amount);
 }

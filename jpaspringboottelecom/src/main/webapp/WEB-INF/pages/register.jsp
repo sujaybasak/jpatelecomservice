@@ -78,6 +78,9 @@ hr {
 .pad{
 padding-left: 20%;
 padding-right: 20%;
+ padding-top: 5%;
+ padding-bottom: 5%;
+ background-color: #f0f8ff;
 }
 
 .registerbtn:hover {
@@ -96,13 +99,14 @@ a {
 }
 </style>
 </head>
-<body>
 <div class="pad">
+<body>
+
 <form method="GET" action="processregister">
   <div class="container">
     <h1 align="center">Registration From</h1>
     <p align= "center">Please fill in this form to create an telecom account.</p>
-    <hr>
+    <br>
 
     <label for="name">Name </label> <br>
     <input name="name" placeholder="Enter your name" type="text" />
@@ -137,7 +141,8 @@ a {
     <p>Already have an account? <a href="/userinput">Sign in</a>.</p>
   </div>
 </form>
-</div>
+
 
 </body>
+</div>
 </html>

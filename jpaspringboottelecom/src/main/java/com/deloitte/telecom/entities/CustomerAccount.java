@@ -34,8 +34,8 @@ public class CustomerAccount {
         return balance;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public void addBalance(double balance) {
+        this.balance += balance;
     }
 
     public String getMobileNo() {

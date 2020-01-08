@@ -7,6 +7,7 @@ import com.deloitte.telecom.entities.CustomerAccount;
 import java.util.List;
 
 
+import com.deloitte.telecom.exceptions.IncorrectMobileNoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +47,10 @@ public class CustomerAccountServiceImpl implements ICustomerAccountService{
 
     @Override
     public CustomerAccount save(CustomerAccount user) {
+        String phone=user.getMobileNo();
+        if(phone==null || phone.length()!=10) {
+            throw new IncorrectMobileNoException("Incorrect mobile number");
+        }
         return userDao.save(user);
     }
 
@@ -60,7 +65,10 @@ public class CustomerAccountServiceImpl implements ICustomerAccountService{
         List<CustomerAccount> users = userDao.fetchUsers(blockSize);
         return users;
     }
-
+    @Override
+    public void rechargeAccount(CustomerAccount c, double amount) {
+        userDao.rechargeAccount(c, amount);
+    }
 
     /*
     @PostConstruct
