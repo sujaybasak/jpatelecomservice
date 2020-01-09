@@ -58,9 +58,10 @@ padding-right: 20%;
 <body>
 <div class="p">
 <div class="container">
-
+ <h2 align ="center">Telecom Management System</h2>
 <h2 align ="center">Welcome <c:out value="${user.name}"/> Your details are given below. </h2>
 <h3>
+
 ID is  <c:out value="${user.id}"/><br>
 Mobile no is  <c:out value="${user.mobileNo}"/><br>
 Name is <c:out value="${user.name}"/><br>
@@ -70,11 +71,14 @@ Recharge amount <c:out value="${user.balance}"/><br>
  <form method="get" action="recharge">
     <label >Recharge:</label><br>
     <input name="amount" placeholder="Enter Recharge Amount" type="number" required>
-    <button type="submit" class="registerbtn">Recharge</button>
+    <div align="center">
+    <button  type="submit" class="registerbtn">Recharge</button>
+    </div>
     </form>
 </h3>
-
+<div align ="center">
 <a href="/signout" class="registerbtn">Sign out</a>
+</div>
 </div>
 </div>
 </body>

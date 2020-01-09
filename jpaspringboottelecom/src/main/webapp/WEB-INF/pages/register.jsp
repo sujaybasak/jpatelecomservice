@@ -105,6 +105,7 @@ a {
 <form method="GET" action="processregister">
   <div class="container">
     <h1 align="center">Registration From</h1>
+    <h2 align ="center">Telecom Management System</h2>
     <p align= "center">Please fill in this form to create an telecom account.</p>
     <br>
 

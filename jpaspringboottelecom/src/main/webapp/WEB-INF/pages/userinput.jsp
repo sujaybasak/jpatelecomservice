@@ -98,11 +98,12 @@ a {
 <body>
 <div class="pad">
  <div class="container">
-<h2 align ="center">Login Page</h2>
+<h1 align ="center">Login Page</h1>
+ <h2 align ="center">Telecom Management System</h2>
 
 <form method="get" action="logincheck">
 <div>
-<span>Id </span><br>
+<span>Mobile No. </span><br>
 <input name="mobileno" type="number" />
 </div>
 <div>

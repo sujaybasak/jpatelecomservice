@@ -100,5 +100,6 @@ public class CustomerAccountDaoImpl implements ICustomerAccountDao {
     @Override
     public void rechargeAccount(CustomerAccount c, double amount) {
         c.addBalance(amount);
+        getEntityManager().merge(c);
     }
 }
